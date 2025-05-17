@@ -2,7 +2,7 @@ CXX = g++
 CXXFLAGS = -Wall -Wextra -std=c++17
 LDLIBS = -lGL -lGLU -lglut
 
-SRCS = main.cpp ground.cpp structure.cpp rectangle.cpp
+SRCS = main.cpp ground.cpp structure.cpp cuboid.cpp
 OBJS = $(patsubst %.cpp,build/%.o,$(SRCS))
 
 TARGET = bin/main

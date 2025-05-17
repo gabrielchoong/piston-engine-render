@@ -10,6 +10,10 @@ void display() {
   glMatrixMode(GL_MODELVIEW);
   glLoadIdentity();
 
+  gluLookAt(0.0f, 0.0f, 3.0f,
+            0.0f, 0.0f, 0.0f,
+            0.0f, 1.0f, 0.0f);
+
   // display functions
   // ground();
   structure();
@@ -25,7 +29,9 @@ void reshape(int width, int height) {
 
   glMatrixMode(GL_PROJECTION);
   glLoadIdentity();
-  gluPerspective(45.0, aspect, 1.0, 5000.0);
+
+  // fovy = 45 deg, zNear = 1.0, zFar = 500.0
+  gluPerspective(45.0, aspect, 1.0, 500.0);
 }
 
 int main(int argc, char** argv) {
@@ -35,7 +41,7 @@ int main(int argc, char** argv) {
   glutInitWindowPosition(100, 100);
   glutCreateWindow("Car Structural Frame");
 
-  // glEnable(GL_DEPTH_TEST);
+  glEnable(GL_DEPTH_TEST);
 
   glutDisplayFunc(display);
   glutReshapeFunc(reshape);
