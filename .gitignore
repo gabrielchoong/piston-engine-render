@@ -32,3 +32,6 @@ build/
 *.out
 *.app
 bin/
+
+# IDE
+.idea

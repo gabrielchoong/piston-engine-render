@@ -10,12 +10,12 @@ void ground() {
     glColor3f(i == 0 ? 0.0f : 0.5f, 0.5f, 0.5f);
 
     // Vertical lines (Z direction)
-    glVertex3f(i, 0, -1000);
-    glVertex3f(i, 0, 1000);
+    glVertex3f(static_cast<GLfloat>(i), 0, -1000);
+    glVertex3f(static_cast<GLfloat>(i), 0, 1000);
 
     // Horizontal lines (X direction)
-    glVertex3f(-1000, 0, i);
-    glVertex3f(1000, 0, i);
+    glVertex3f(-1000, 0, static_cast<GLfloat>(i));
+    glVertex3f(1000, 0, static_cast<GLfloat>(i));
   }
   glEnd();
 }

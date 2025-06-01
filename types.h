@@ -21,6 +21,9 @@ struct Rotate4f {
 
 using Translate3f = Vec3f;
 using Scale3f = Vec3f;
+using Eye3f = Vec3f;
+using Center3f = Vec3f;
+using Up3f = Vec3f;
 
 
 #endif

@@ -1,11 +1,8 @@
-#include <GL/glut.h>
-
 #include "cuboid.hpp"
 #include "types.h"
 
 void structure() {
-
-  Dimensions3f dimensions = {0.2f, 0.3f, 0.5f};
+  constexpr Dimensions3f dimensions = {0.2f, 0.3f, 0.5f};
 
   Cuboid(dimensions,
       Color3f{1.0f, 1.0f, 1.0f},

@@ -1,51 +1,25 @@
 #include <GL/glut.h>
 
-#include "ground.hpp"
-#include "structure.hpp"
-
-void display() {
-  glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-  glMatrixMode(GL_MODELVIEW);
-  glLoadIdentity();
-
-  gluLookAt(0.0f, 0.0f, 3.0f,
-            0.0f, 0.0f, 0.0f,
-            0.0f, 1.0f, 0.0f);
-
-  // display functions
-  // ground();
-  structure();
-
-  glutSwapBuffers();
-}
-
-void reshape(int width, int height) {
-  if (height == 0) height = 1;
-  float aspect = (float) width / (float) height;
-
-  glViewport(0, 0, width, height);
-
-  glMatrixMode(GL_PROJECTION);
-  glLoadIdentity();
-
-  // fovy = 45 deg, zNear = 1.0, zFar = 500.0
-  gluPerspective(45.0, aspect, 1.0, 500.0);
-}
+#include "init.hpp"
+#include "input.hpp"
+#include "callbacks.hpp"
 
 int main(int argc, char** argv) {
   glutInit(&argc, argv);
   glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
   glutInitWindowSize(640, 480);
   glutInitWindowPosition(100, 100);
-  glutCreateWindow("Car Structural Frame");
+  glutCreateWindow("Single Piston Cylinder");
 
-  glEnable(GL_DEPTH_TEST);
+  InitOpenGL();
+  InitScene();
 
   glutDisplayFunc(display);
+  glutIdleFunc(update);
   glutReshapeFunc(reshape);
-  glutMainLoop();
+  glutKeyboardFunc(keyboard);
+  glutMouseFunc(mouse);
 
+  glutMainLoop();
   return 0;
 }
