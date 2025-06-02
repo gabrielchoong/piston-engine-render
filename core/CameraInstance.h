@@ -1,7 +1,7 @@
 #ifndef CAMERAINSTANCE_HPP
 #define CAMERAINSTANCE_HPP
 
-#include "camera.hpp"
+#include "Camera.hpp"
 
 inline Camera globalCamera;
 

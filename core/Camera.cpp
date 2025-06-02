@@ -1,7 +1,7 @@
 #include <GL/glu.h>
 
-#include "types.h"
-#include "camera.hpp"
+#include "../types.h"
+#include "Camera.hpp"
 
 Camera::Camera() {
   eyeX = 0.0f; eyeY = 0.0f; eyeZ = 3.0f;
@@ -51,4 +51,14 @@ void Camera::updateAll(const Eye3f &eye, const Center3f &center, const Up3f &up)
   updateEye(eye);
   updateCenter(center);
   updateUp(up);
+}
+
+void Camera::updateProjection(float width, float height) {
+  const float aspect = width / height;
+
+  glMatrixMode(GL_PROJECTION);
+  glLoadIdentity();
+
+  // glOrtho(-2, 2, -2, 2, 0.1, 100);
+  gluPerspective(45.0, aspect, 1.0, 500.0);
 }

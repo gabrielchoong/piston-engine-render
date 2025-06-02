@@ -1,17 +1,14 @@
+#include "Cuboid.hpp"
+
 #include <GL/glut.h>
 
-#include "types.h"
-#include "cuboid.hpp"
+Cuboid::Cuboid(Dimensions3f d, Translate3f t, Rotate4f r, Scale3f s)
+  : dimensions(d), translate(t), rotation(r), scale(s) {}
 
-void Cuboid(const Dimensions3f& dimensions,
-            const Color3f& color,
-            const Translate3f& position,
-            const Rotate4f& rotation,
-            const Scale3f& scale) {
+void Cuboid::draw() const {
   glPushMatrix();
 
-  glColor3f(color.red, color.green, color.blue);
-  glTranslatef(position.x, position.y, position.z);
+  glTranslatef(translate.x, translate.y, translate.z);
   glRotatef(rotation.angle, rotation.axis.x, rotation.axis.y, rotation.axis.z);
   glScalef(scale.x, scale.y, scale.z);
 
@@ -21,9 +18,9 @@ void Cuboid(const Dimensions3f& dimensions,
 }
 
 void drawCuboid(const Dimensions3f& dimensions) {
-  float x = 0.0f;
-  float y = 0.0f;
-  float z = 0.0f;
+  float x;
+  float y;
+  float z = y = x = 0.0f;
 
   float h = dimensions.height;
   float l = dimensions.length;

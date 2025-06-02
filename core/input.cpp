@@ -1,8 +1,8 @@
 #include <GL/freeglut_std.h>
 
-#include "types.h"
+#include "../types.h"
 #include "input.hpp"
-#include "camera.hpp"
+#include "Camera.hpp"
 #include "CameraInstance.h"
 
 Camera& cam = globalCamera;
@@ -12,7 +12,7 @@ void keyboard(unsigned char key, int x, int y) {
   Center3f newCenter = cam.getCenter();
   Up3f newUp = cam.getUp();
 
-  constexpr float delta = 0.1f;
+  constexpr float delta = 0.3f;
 
   switch (key) {
     case 'w':
@@ -22,10 +22,10 @@ void keyboard(unsigned char key, int x, int y) {
       newEye.y += delta;
       break;
     case 'a':
-      newEye.x -= delta;
+      newEye.x += delta;
       break;
     case 'd':
-      newEye.x += delta;
+      newEye.x -= delta;
       break;
     case 'q':
       newEye.z -= delta;

@@ -1,6 +1,6 @@
 #ifndef CAMERA_HPP
 #define CAMERA_HPP
-#include "types.h"
+#include "../types.h"
 
 class Camera {
 public:
@@ -20,7 +20,8 @@ public:
   void updateUp(const Up3f& up);
 
   void updateAll(const Eye3f& eye, const Center3f& center, const Up3f& up);
-  void updateProjectsion();
+
+  static void updateProjection(float width, float height);
 };
 
 #endif

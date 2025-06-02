@@ -1,7 +1,7 @@
 #include <GL/glut.h>
 
-#include "camera.hpp"
-#include "structure.hpp"
+#include "Camera.hpp"
+#include "../components/structure.hpp"
 #include "CameraInstance.h"
 
 Camera& cam1 = globalCamera;
@@ -21,13 +21,6 @@ void display() {
 
 void reshape(const int width, int height) {
   if (height == 0) height = 1;
-  const float aspect = static_cast<float>(width) / static_cast<float>(height);
-
   glViewport(0, 0, width, height);
-
-  glMatrixMode(GL_PROJECTION);
-  glLoadIdentity();
-
-  // fovy = 45 deg, zNear = 1.0, zFar = 500.0
-  gluPerspective(45.0, aspect, 1.0, 500.0);
+  cam1.updateProjection(static_cast<float>(width), height);
 }

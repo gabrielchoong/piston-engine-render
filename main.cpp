@@ -1,8 +1,8 @@
 #include <GL/glut.h>
 
-#include "init.hpp"
-#include "input.hpp"
-#include "callbacks.hpp"
+#include "core/init.hpp"
+#include "core/input.hpp"
+#include "core/callbacks.hpp"
 
 int main(int argc, char** argv) {
   glutInit(&argc, argv);
