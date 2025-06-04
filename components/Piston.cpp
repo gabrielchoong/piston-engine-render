@@ -7,7 +7,7 @@
 #include "../shapes/Cuboid.hpp"
 #include "../shapes/Cylinder.hpp"
 
-Piston::Piston(const Vec3f& basePosition,
+Piston::Piston(const Vec3f &basePosition,
                float pistonHeight,
                float pistonRadiusTop,
                float pistonRadiusBottom,
@@ -26,11 +26,10 @@ Piston::Piston(const Vec3f& basePosition,
     crankPinRadiusBottom(crankPinRadiusBottom),
     rodHeight(rodHeight),
     rodLength(rodLength),
-    rodWidth(rodWidth)
-{}
+    rodWidth(rodWidth) {
+}
 
 void Piston::draw() const {
-
   glPushMatrix();
   // to position the piston at the starting position
   glTranslatef(basePosition.x, basePosition.y, basePosition.z);
@@ -47,23 +46,21 @@ void Piston::draw() const {
   glPushMatrix();
   // to ensure the rod appears at the correct position
   // under the piston head and doesn't intersect in weird ways
-  glTranslatef(0, -pistonHeight-rodHeight, 0);
+  glTranslatef(0, -pistonHeight - rodHeight, 0);
   glColor3f(0.0f, 0.0f, 1.0f);
+  glTranslatef(-rodLength / 2.0f, 0, -rodWidth / 2.0f);
 
   drawConnectingRod(
-  Dimensions3f{rodHeight, rodLength, rodWidth},
-  Translate3f{-0.15f, 0.0f, -0.15f},
-  Rotate4f{0.0f, 0.0f, 0.0f, 0.0f},
-  Scale3f{1.0f, 1.0f, 1.0f});
+    Dimensions3f{rodHeight, rodLength, rodWidth});
   glPopMatrix();
 
   glPushMatrix();
   // this is also to ensure the crank pin
   // renders under the connecting rod
-  glTranslatef(0, -pistonHeight-rodHeight-crankPinHeight, 0);
+  glTranslatef(0, -pistonHeight - rodHeight - crankPinHeight, 0);
   glColor3f(0.0f, 1.0f, 0.0f);
 
-  glTranslatef(0.0f, 0, -0.05f);
+  glTranslatef(0.0f, 0, -crankPinHeight / 2.0f);
   drawCrankPin(crankPinRadiusTop,
                crankPinRadiusBottom,
                crankPinHeight,
@@ -73,7 +70,6 @@ void Piston::draw() const {
 }
 
 void Piston::update(float crankAngle) {
-
 }
 
 void drawPistonHead(float pistonRadiusTop,
@@ -81,15 +77,18 @@ void drawPistonHead(float pistonRadiusTop,
                     float pistonHeight,
                     int slices,
                     int stacks) {
+  GLUquadric *quad = gluNewQuadric();
 
-  GLUquadric* quad = gluNewQuadric();
-
+  glPushMatrix();
+  // to flip the circle on its side
+  glRotatef(180.0f, 1.0f, 0.0f, 0.0f);
+  glColor3f(0.0f, 1.0f, 0.0f);
   Circle bottomCircle(quad,
                       pistonRadiusBottom,
-                      slices,
-                      Rotate4f{180.0f, 1.0f, 0.0f, 0.0f},
-                      Translate3f{0.0f, 0.0f, 0.0f});
+                      slices);
+  glPopMatrix();
 
+  glColor3f(1.0f, 0.0f, 0.0f);
   Cylinder cylinder(quad,
                     pistonRadiusTop,
                     pistonRadiusBottom,
@@ -97,11 +96,12 @@ void drawPistonHead(float pistonRadiusTop,
                     slices,
                     stacks);
 
+  glPushMatrix();
+  glTranslatef(0.0f, 0.0f, pistonHeight);
   Circle topCircle(quad,
                    pistonRadiusTop,
-                   slices,
-                   Rotate4f{0.0f, 0.0f, 0.0f, 0.0f},
-                   Translate3f{0.0f, 0.0f, pistonHeight});
+                   slices);
+  glPopMatrix();
 
   bottomCircle.draw();
   cylinder.draw();
@@ -110,13 +110,8 @@ void drawPistonHead(float pistonRadiusTop,
   gluDeleteQuadric(quad);
 }
 
-void drawConnectingRod(Dimensions3f dimension,
-                       Translate3f translate,
-                       Rotate4f rotate,
-                       Scale3f scale) {
-  Cuboid connectingRod(
-    dimension, translate, rotate, scale
-    );
+void drawConnectingRod(const Dimensions3f dimension) {
+  const Cuboid connectingRod(dimension);
 
   connectingRod.draw();
 }
@@ -126,7 +121,7 @@ void drawCrankPin(float radiusTop,
                   float height,
                   int slices,
                   int stacks) {
-  GLUquadric* quad = gluNewQuadric();
+  GLUquadric *quad = gluNewQuadric();
 
   Cylinder cylinder(quad,
                     radiusTop,

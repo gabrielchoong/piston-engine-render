@@ -10,6 +10,7 @@ core/Camera.cpp \
 shapes/Cuboid.cpp \
 shapes/Cylinder.cpp \
 shapes/Circle.cpp \
+shapes/DrawCuboid.cpp \
 components/Piston.cpp \
 components/structure.cpp \
 main.cpp

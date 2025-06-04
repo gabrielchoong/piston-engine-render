@@ -17,7 +17,8 @@ public:
                float rodLength,
                float rodWidth);
   void draw() const;
-  void update(float crankAngle);
+
+  static void update(float crankAngle);
 
 private:
   Vec3f basePosition;
@@ -37,10 +38,7 @@ void drawPistonHead(float pistonRadiusTop,
                     float pistonHeight,
                     int slices,
                     int stacks);
-void drawConnectingRod(Dimensions3f dimension,
-                       Translate3f translate,
-                       Rotate4f rotate,
-                       Scale3f scale);
+void drawConnectingRod(Dimensions3f dimension);
 void drawCrankPin(float radiusTop,
                   float radiusBottom,
                   float height,

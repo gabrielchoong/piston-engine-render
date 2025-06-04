@@ -6,14 +6,10 @@
 class Cuboid {
 public:
   Dimensions3f dimensions;
-  Translate3f translate;
-  Rotate4f rotation;
-  Scale3f scale;
 
-  Cuboid(Dimensions3f d, Translate3f t, Rotate4f r, Scale3f s);
+  explicit Cuboid(Dimensions3f d);
+
   void draw() const;
 };
-
-void drawCuboid(const Dimensions3f& dimensions);
 
 #endif
