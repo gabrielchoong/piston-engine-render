@@ -1,24 +1,28 @@
 #include "Cylinder.hpp"
 
 Cylinder::Cylinder(GLUquadric *quad,
-                   const float radiusTop,
-                   const float radiusBottom,
-                   const float height,
-                   const int slices,
-                   const int stacks)
-  : radiusTop(radiusTop), radiusBottom(radiusBottom), height(height),
-    slices(slices), stacks(stacks), quad(quad) {
+                   const float cylinderTopRadius,
+                   const float cylinderBottomRadius,
+                   const float cylinderHeight,
+                   const int slice,
+                   const int stack)
+  : cylinderTopRadius(cylinderTopRadius),
+    cylinderBottomRadius(cylinderBottomRadius),
+    cylinderHeight(cylinderHeight),
+    slice(slice),
+    stack(stack),
+    quad(quad) {
 }
 
 void Cylinder::draw() const {
   glPushMatrix();
 
   gluCylinder(quad,
-              radiusBottom,
-              radiusTop,
-              height,
-              slices,
-              stacks);
+              cylinderBottomRadius,
+              cylinderTopRadius,
+              cylinderHeight,
+              slice,
+              stack);
 
   glPopMatrix();
 }
