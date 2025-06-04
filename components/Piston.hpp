@@ -38,7 +38,7 @@ void drawPistonHead(float pistonRadiusTop,
                     float pistonHeight,
                     int slices,
                     int stacks);
-void drawConnectingRod(Dimensions3f dimension);
+void drawConnectingRod(const Dimensions3f& dimension);
 void drawCrankPin(float radiusTop,
                   float radiusBottom,
                   float height,
