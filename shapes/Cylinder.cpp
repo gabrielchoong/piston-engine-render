@@ -15,14 +15,10 @@ Cylinder::Cylinder(GLUquadric *quad,
 }
 
 void Cylinder::draw() const {
-  glPushMatrix();
-
   gluCylinder(quad,
               cylinderBottomRadius,
               cylinderTopRadius,
               cylinderHeight,
               slice,
               stack);
-
-  glPopMatrix();
 }

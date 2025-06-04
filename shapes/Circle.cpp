@@ -9,9 +9,6 @@ Circle::Circle(GLUquadric *quad,
 }
 
 void Circle::draw() const {
-  gluDisk(quad,
-          0.0f,
-          radius,
-          slice,
-          1);
+  // TODO: determine if inner radius needs to be dynamic
+  gluDisk(quad, 0.0f, radius, slice, 1);
 }
