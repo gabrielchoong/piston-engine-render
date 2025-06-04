@@ -7,13 +7,13 @@ class Circle {
 public:
   Circle(GLUquadric *quad,
          float radius,
-         int slices);
+         int slice);
 
   void draw() const;
 
 private:
   float radius;
-  int slices;
+  int slice;
   GLUquadric *quad;
 };
 

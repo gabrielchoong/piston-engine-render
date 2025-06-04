@@ -2,9 +2,9 @@
 
 Circle::Circle(GLUquadric *quad,
                const float radius,
-               const int slices)
+               const int slice)
   : radius(radius),
-    slices(slices),
+    slice(slice),
     quad(quad) {
 }
 
@@ -12,6 +12,6 @@ void Circle::draw() const {
   gluDisk(quad,
           0.0f,
           radius,
-          slices,
+          slice,
           1);
 }
