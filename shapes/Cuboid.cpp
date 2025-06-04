@@ -1,5 +1,5 @@
 #include "Cuboid.hpp"
-#include "DrawCuboid.hpp"
+#include "../render/DrawCuboid.hpp"
 
 Cuboid::Cuboid(const Dimensions3f dimensions)
   : dimensions(dimensions) {

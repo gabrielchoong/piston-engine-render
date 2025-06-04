@@ -10,8 +10,11 @@ core/Camera.cpp \
 shapes/Cuboid.cpp \
 shapes/Cylinder.cpp \
 shapes/Circle.cpp \
-shapes/DrawCuboid.cpp \
+render/DrawCuboid.cpp \
 components/Piston.cpp \
+components/PistonHead.cpp \
+components/ConnectingRod.cpp \
+components/CrankPin.cpp \
 components/structure.cpp \
 main.cpp
 
