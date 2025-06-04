@@ -1,8 +1,8 @@
 #include "Cuboid.hpp"
 #include "DrawCuboid.hpp"
 
-Cuboid::Cuboid(const Dimensions3f d)
-  : dimensions(d) {
+Cuboid::Cuboid(const Dimensions3f dimensions)
+  : dimensions(dimensions) {
 }
 
 void Cuboid::draw() const {

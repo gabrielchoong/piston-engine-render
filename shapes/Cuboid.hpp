@@ -7,7 +7,7 @@ class Cuboid {
 public:
   Dimensions3f dimensions;
 
-  explicit Cuboid(Dimensions3f d);
+  explicit Cuboid(Dimensions3f dimensions);
 
   void draw() const;
 };
